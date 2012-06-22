@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+
+		<h:form id="companyForm">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{msg.companyFirstNameLabel}" />
+				<h:inputText id="firstName" value="#{companyBean.company.firstName}"
+					required="#{true}" />
+
+				<h:outputText value="#{msg.companyNIPLabel}" />
+				<h:inputText id="regon" value="#{companyBean.company.nip}"
+					validator="#{companyBean.uniqueNIP}" required="#{true}">
+					<f:validator validatorId="nipValidator" />
+					<f:ajax execute="@this" render="messages beanState" />
+				</h:inputText>
+
+				<h:outputText value="#{msg.companyDobLabel}" />
+				<h:inputText id="dob" value="#{companyBean.company.dateOfBirth}">
+					<f:convertDateTime type="date" pattern="dd.MM.yyyy" />
+				</h:inputText>
+
+				<h:outputText value="#{msg.companyZipCodeLabel}" />
+				<h:inputText id="zipCode" value="#{companyBean.company.zipCode}" />
+
+				<h:outputText value="#{msg.companyEmployLabel}" />
+				<h:inputText id="employ" value="#{companyBean.company.employ}">
+					<f:validateDoubleRange minimum="1" maximum="2000" />
+					<f:ajax execute="@this" render="messages beanState" />
+				</h:inputText>
+
+				<h:outputText value="#{msg.companyNumOfChildrenLabel}" />
+				<h:inputText id="noc" value="#{companyBean.company.numOfChildren}">
+
+				</h:inputText>
+
+			</h:panelGrid>
+
+			<h:commandButton value="#{msg.companyFormOKButton}"
+				action="#{companyBean.addCompany}" />
+
+
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+			<h:panelGrid id="beanState" columns="2">
+				<h:outputText value="#{msg.companyFirstNameLabel}" />
+				<h:outputText id="nameOutput" value="#{companyBean.company.firstName}" />
+
+				<h:outputText value="#{msg.companyNIPLabel}" />
+				<h:outputText id="nipOutput" value="#{companyBean.company.nip}" />
+
+				<h:outputText value="#{msg.companyDobLabel}" />
+				<h:outputText id="dobOutput"
+					value="#{companyBean.company.dateOfBirth}" />
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

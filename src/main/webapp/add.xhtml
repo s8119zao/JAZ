@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	<head>
+	        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+	       
+	    </head>
+	<ui:define name="content">
+		<h:form id="companyform">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="Dodaj firme za pomoca prostego formularza" />
+				<h:commandButton action="addSimple?faces-redirect=true" value=" Dodaj " />
+				
+				<h:outputText value="Dodaj firme za pomoca formularza z systemem sprawdzania poprawnosci danych" />
+				<h:commandButton action="addValidation?faces-redirect=true" value=" Dodaj " />
+				
+				<h:outputText value="Dodaj firme z uzyciem technologi AJAX dla JSF 2.0" />
+				<h:commandButton action="addAjax?faces-redirect=true" value="Dodaj"/>
+
+				<h:outputText value="Dodaj firme z uzyciem RichFaces" />
+				<h:commandButton action="addRF?faces-redirect=true" value="Dodaj"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
