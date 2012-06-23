@@ -16,10 +16,10 @@ public class nipValidator implements Validator {
 		
 		String nip = (String) value;
 		
-		if (nip.length() != 4) {
+		if (nip.length() != 10) {
 			FacesMessage message = new FacesMessage();
-			message.setDetail("NIP musi składać się z 5 cyfr");
-			message.setSummary("NIP musi składać się z 4 cyfr");
+			message.setDetail("Numer NIP musi składać się z 10 cyfr");
+			message.setSummary("Numer NIP musi składać się z 10 cyfr");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}

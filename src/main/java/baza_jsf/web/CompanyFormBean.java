@@ -133,7 +133,7 @@ public class CompanyFormBean implements Serializable {
 		for (Company Company : pm.getAllCompanies()) {
 			if (Company.getNip().equalsIgnoreCase(nip)) {
 				FacesMessage message = new FacesMessage(
-						"Company with this NIP already exists in database");
+						"Pracownik o podanym numerze NIP jest juz w bazie danych");
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
 				throw new ValidatorException(message);
 			}
